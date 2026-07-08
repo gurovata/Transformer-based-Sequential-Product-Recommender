@@ -1,0 +1,58 @@
+{
+  "seed": 42,
+  "paths": {
+    "raw_dir": "data/raw",
+    "processed_dir": "data/processed",
+    "models_dir": "artifacts/models",
+    "metrics_dir": "artifacts/metrics",
+    "reports_dir": "artifacts/reports",
+    "sqlite_path": "data/recommender.sqlite"
+  },
+  "data_generation": {
+    "num_users": 450,
+    "num_items": 260,
+    "min_interactions": 6,
+    "max_interactions": 40,
+    "categories": [
+      "mobile",
+      "internet",
+      "tv",
+      "finance",
+      "entertainment",
+      "cloud",
+      "devices",
+      "travel"
+    ],
+    "price_buckets": ["free", "low", "medium", "high"],
+    "event_weights": {
+      "view": 1.0,
+      "cart": 2.0,
+      "purchase": 4.0
+    }
+  },
+  "preprocessing": {
+    "min_sequence_length": 5,
+    "interaction_event_types": ["view", "cart", "purchase"]
+  },
+  "model": {
+    "max_seq_len": 50,
+    "embedding_dim": 64,
+    "num_heads": 4,
+    "num_layers": 2,
+    "dropout": 0.1,
+    "batch_size": 64,
+    "epochs": 3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.00001
+  },
+  "baselines": {
+    "item_knn_neighbors": 80,
+    "als_factors": 32,
+    "als_iterations": 12
+  },
+  "evaluation": {
+    "ks": [5, 10, 20],
+    "exclude_seen": true
+  }
+}
+
